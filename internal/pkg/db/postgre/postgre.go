@@ -12,7 +12,7 @@ import (
 )
 
 var (
-	Client *sql.DB
+	Client   *sql.DB
 	Database *gorm.DB
 )
 

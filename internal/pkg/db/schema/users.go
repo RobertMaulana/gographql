@@ -2,7 +2,7 @@ package schema
 
 type Users struct {
 	Base
-	Name string
+	Name     string
 	Username string `gorm:"not null"`
 	Password string
 }

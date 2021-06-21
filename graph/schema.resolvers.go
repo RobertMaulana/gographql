@@ -83,7 +83,7 @@ func (r *queryResolver) Links(ctx context.Context) ([]*model.Link, error) {
 	dbLinks = links.GetAll()
 	for _, link := range dbLinks {
 		grahpqlUser := &model.User{
-			ID: link.User.ID,
+			ID:       link.User.ID,
 			Username: link.User.Username,
 		}
 		resultLinks = append(resultLinks, &model.Link{ID: link.ID, Title: link.Title, Address: link.Address, User: grahpqlUser})

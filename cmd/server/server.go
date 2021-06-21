@@ -36,10 +36,3 @@ func main() {
 	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
 	log.Fatal(http.ListenAndServe(":"+port, router))
 }
-
-/*
-TODO:
-1. logger query & mutation
-2. rate limiter
-3.
-*/

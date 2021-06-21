@@ -2,9 +2,9 @@ package schema
 
 type Links struct {
 	Base
-	Title string `gorm:"not null"`
+	Title   string `gorm:"not null"`
 	Address string `gorm:"not null"`
-	UserId int `gorm:"not null"`
+	UserId  int    `gorm:"not null"`
 }
 
 func (Links) TableName() string {

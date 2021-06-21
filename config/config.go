@@ -10,26 +10,26 @@ import (
 )
 
 type configuration struct {
-	Debug      bool   `json:"debug"`
-	Port       string `json:"port"`
-	AppDebug   bool   `json:"app_debug"`
-	Pool       *cache.Cache
+	Debug    bool   `json:"debug"`
+	Port     string `json:"port"`
+	AppDebug bool   `json:"app_debug"`
+	Pool     *cache.Cache
 
 	Db struct {
-		Driver string `json:"driver"`
-		User string `json:"user"`
+		Driver   string `json:"driver"`
+		User     string `json:"user"`
 		Password string `json:"password"`
-		Host string `json:"host"`
-		Port     string    `json:"port"`
-		DbName       string `json:"db_name"`
+		Host     string `json:"host"`
+		Port     string `json:"port"`
+		DbName   string `json:"db_name"`
 	} `json:"db"`
 
-	Migration struct{
+	Migration struct {
 		DbAutoCreate bool `json:"db_auto_create"`
 	}
 
 	Auth struct {
-		SecretKey        string        `json:"secret_key"`
+		SecretKey string `json:"secret_key"`
 	} `json:"auth"`
 }
 
