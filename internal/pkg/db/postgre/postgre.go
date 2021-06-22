@@ -3,8 +3,8 @@ package database
 import (
 	"database/sql"
 	"fmt"
-	"github.com/glyphack/graphlq-golang/config"
-	"github.com/glyphack/graphlq-golang/internal/pkg/db/schema"
+	"github.com/RobertMaulana/graphql-go/config"
+	"github.com/RobertMaulana/graphql-go/internal/pkg/db/schema"
 	_ "github.com/golang-migrate/migrate/source/file"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"

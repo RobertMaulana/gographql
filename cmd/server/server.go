@@ -1,12 +1,11 @@
 package main
 
 import (
-	"github.com/glyphack/graphlq-golang/config"
-	"github.com/glyphack/graphlq-golang/graph"
-	"github.com/glyphack/graphlq-golang/graph/generated"
-	"github.com/glyphack/graphlq-golang/internal/auth"
-	_ "github.com/glyphack/graphlq-golang/internal/auth"
-	database "github.com/glyphack/graphlq-golang/internal/pkg/db/postgre"
+	"github.com/RobertMaulana/graphql-go/config"
+	"github.com/RobertMaulana/graphql-go/graph"
+	"github.com/RobertMaulana/graphql-go/graph/generated"
+	"github.com/RobertMaulana/graphql-go/internal/auth"
+	database "github.com/RobertMaulana/graphql-go/internal/pkg/db/postgre"
 	"log"
 	"net/http"
 	"os"
@@ -27,12 +26,17 @@ func main() {
 		port = "8080"
 	}
 
-	server := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{Resolvers: &graph.Resolver{}}))
+	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	errorLog := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+
+	server := handler.NewDefaultServer(generated.NewExecutableSchema(generated.Config{
+		Resolvers: &graph.Resolver{},
+	}))
 
 	router := http.NewServeMux()
 	router.Handle("/", playground.Handler("GraphQL playground", "/query"))
 	router.Handle("/query", auth.Middleware(server))
 
-	log.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
-	log.Fatal(http.ListenAndServe(":"+port, router))
+	infoLog.Printf("connect to http://localhost:%s/ for GraphQL playground", port)
+	errorLog.Fatal(http.ListenAndServe(":"+port, router))
 }

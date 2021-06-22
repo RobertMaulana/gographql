@@ -2,7 +2,7 @@ package users
 
 import (
 	"database/sql"
-	"github.com/glyphack/graphlq-golang/internal/pkg/db/postgre"
+	"github.com/RobertMaulana/graphql-go/internal/pkg/db/postgre"
 	"golang.org/x/crypto/bcrypt"
 	"log"
 )

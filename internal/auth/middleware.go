@@ -2,8 +2,8 @@ package auth
 
 import (
 	"context"
-	"github.com/glyphack/graphlq-golang/internal/users"
-	"github.com/glyphack/graphlq-golang/pkg/jwt"
+	"github.com/RobertMaulana/graphql-go/internal/pkg/db/model/users"
+	"github.com/RobertMaulana/graphql-go/pkg/jwt"
 	"net/http"
 )
 

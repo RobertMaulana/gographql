@@ -1,8 +1,8 @@
 package links
 
 import (
-	database "github.com/glyphack/graphlq-golang/internal/pkg/db/postgre"
-	"github.com/glyphack/graphlq-golang/internal/users"
+	"github.com/RobertMaulana/graphql-go/internal/pkg/db/model/users"
+	database "github.com/RobertMaulana/graphql-go/internal/pkg/db/postgre"
 	"log"
 )
 
