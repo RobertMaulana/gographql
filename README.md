@@ -7,4 +7,6 @@
 6. Subscription
 7. Background task
 8. Webhooks
-9. Authentication
+
+### Done
+1. Authentication
