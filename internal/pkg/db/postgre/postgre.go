@@ -40,5 +40,4 @@ func Migrate() {
 		schema.AutoMigrate(Database)
 		fmt.Println("All tables recreated successfully...")
 	}
-
 }
