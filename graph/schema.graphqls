@@ -1,11 +1,58 @@
-type Link {
+scalar DateTime
+
+type Objective {
     id: ID!
-    title: String!
-    address: String!
-    user: User!
+    name: String!
+    description: String!
+    status: Int!
+    key_result: KeyResult!
+    owner: Owner!
+    lead: Lead!
+    contributors: Contributors
+    tags: Tags
+    activity: Activities
 }
 
-type User {
+type KeyResult {
+    id: ID!
+    name: String!
+    description: String!
+    lead: Lead!
+    objective: Objective!
+    measure_unit: String!
+    min_value: Float!
+    max_value: Float!
+    result_type: String!
+    status: Int!
+    parent_key_result: ID
+    contributors: Contributors
+    start_date: DateTime
+    due_date: DateTime
+    comment: String
+}
+
+type Activities {
+    id: ID!
+    owner: Owner!
+
+}
+
+type Owner {
+    id: Int!
+    username: String!
+}
+
+type Lead {
+    id: Int!
+    username: String!
+}
+
+type Contributors {
+    id: Int!
+    username: String!
+}
+
+type Tags {
     id: Int!
     username: String!
 }
