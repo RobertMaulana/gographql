@@ -2,11 +2,32 @@
 
 package model
 
-type Link struct {
-	ID      string `json:"id"`
-	Title   string `json:"title"`
-	Address string `json:"address"`
-	User    *User  `json:"user"`
+type Contributors struct {
+	ID       int    `json:"id"`
+	Username string `json:"username"`
+}
+
+type KeyResult struct {
+	ID              string        `json:"id"`
+	Name            string        `json:"name"`
+	Description     string        `json:"description"`
+	Lead            *Lead         `json:"lead"`
+	Objective       *Objective    `json:"objective"`
+	MeasureUnit     string        `json:"measure_unit"`
+	MinValue        float64       `json:"min_value"`
+	MaxValue        float64       `json:"max_value"`
+	ResultType      string        `json:"result_type"`
+	Status          int           `json:"status"`
+	ParentKeyResult *string       `json:"parent_key_result"`
+	Contributors    *Contributors `json:"contributors"`
+	StartDate       *string       `json:"start_date"`
+	DueDate         *string       `json:"due_date"`
+	Comment         *string       `json:"comment"`
+}
+
+type Lead struct {
+	ID       int    `json:"id"`
+	Username string `json:"username"`
 }
 
 type Login struct {
@@ -14,9 +35,15 @@ type Login struct {
 	Password string `json:"password"`
 }
 
-type NewLink struct {
-	Title   string `json:"title"`
-	Address string `json:"address"`
+type NewObjective struct {
+	Name         string  `json:"name"`
+	Description  string  `json:"description"`
+	Owner        string  `json:"owner"`
+	Lead         string  `json:"lead"`
+	Timeframe    string  `json:"timeframe"`
+	Contributors *string `json:"contributors"`
+	Tags         *string `json:"tags"`
+	Status       *string `json:"status"`
 }
 
 type NewUser struct {
@@ -24,11 +51,35 @@ type NewUser struct {
 	Password string `json:"password"`
 }
 
+type Objective struct {
+	ID           string        `json:"id"`
+	Name         string        `json:"name"`
+	Description  string        `json:"description"`
+	Status       int           `json:"status"`
+	KeyResult    *KeyResult    `json:"key_result"`
+	Owner        *Owner        `json:"owner"`
+	Lead         *Lead         `json:"lead"`
+	Contributors *Contributors `json:"contributors"`
+	Tags         *Tags         `json:"tags"`
+	Timeframe    *TimeFrame    `json:"timeframe"`
+}
+
+type Owner struct {
+	ID       int    `json:"id"`
+	Username string `json:"username"`
+}
+
 type RefreshTokenInput struct {
 	Token string `json:"token"`
 }
 
-type User struct {
+type Tags struct {
 	ID       int    `json:"id"`
 	Username string `json:"username"`
+}
+
+type TimeFrame struct {
+	ID          string  `json:"id"`
+	Name        string  `json:"name"`
+	Description *string `json:"description"`
 }
