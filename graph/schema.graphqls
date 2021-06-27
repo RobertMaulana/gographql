@@ -1,40 +1,9 @@
 scalar DateTime
 
-type Objective {
+type TimeFrame {
     id: ID!
     name: String!
-    description: String!
-    status: Int!
-    key_result: KeyResult!
-    owner: Owner!
-    lead: Lead!
-    contributors: Contributors
-    tags: Tags
-    activity: Activities
-}
-
-type KeyResult {
-    id: ID!
-    name: String!
-    description: String!
-    lead: Lead!
-    objective: Objective!
-    measure_unit: String!
-    min_value: Float!
-    max_value: Float!
-    result_type: String!
-    status: Int!
-    parent_key_result: ID
-    contributors: Contributors
-    start_date: DateTime
-    due_date: DateTime
-    comment: String
-}
-
-type Activities {
-    id: ID!
-    owner: Owner!
-
+    description: String
 }
 
 type Owner {
@@ -57,11 +26,7 @@ type Tags {
     username: String!
 }
 
-input NewLink {
-    title: String!
-    address: String!
-}
-
+# ============================= auth type & input =============================
 input RefreshTokenInput{
     token: String!
 }
@@ -75,15 +40,68 @@ input Login {
     username: String!
     password: String!
 }
+# ============================= end =============================
 
-type Query {
-    links: [Link!]!
+# ============================= objective type & input =============================
+type Objective {
+    id: String!
+    name: String!
+    description: String!
+    status: Int!
+    key_result: KeyResult
+    owner: Owner!
+    lead: Lead!
+    contributors: Contributors
+    tags: Tags
+    timeframe: TimeFrame
 }
+input NewObjective {
+    name: String!
+    description: String!
+    owner: String!
+    lead: String!
+    timeframe: String! # id timeframe
+    contributors: String
+    tags: String
+    status: String
+}
+# ============================= end =============================
 
+# ============================= key result type & input =============================
+type KeyResult {
+    id: String!
+    name: String!
+    description: String!
+    lead: Lead!
+    objective: Objective!
+    measure_unit: String!
+    min_value: Float!
+    max_value: Float!
+    result_type: String!
+    status: Int!
+    parent_key_result: String
+    contributors: Contributors
+    start_date: DateTime
+    due_date: DateTime
+    comment: String
+}
+# ============================= end  =============================
+
+# ============================= QUERY =============================
+type Query {
+#    links: [Link!]!
+}
+# ============================= end  =============================
+
+# ============================= MUTATION =============================
 type Mutation {
-    createLink(input: NewLink!): Link!
+    # objective
+    newObjective(input: NewObjective!): Objective!
+
+    # auth
     createUser(input: NewUser!): String!
     login(input: Login!): String!
-    # we'll talk about this in authentication section
     refreshToken(input: RefreshTokenInput!): String!
 }
+
+# ============================= end  =============================
